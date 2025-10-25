@@ -43,7 +43,7 @@ class GoForwardCommand(commands2.Command):
         # LowerElevator both use the Elevator subsystem and can't run at the
         # same time, so they must each call addRequirements(self.elevator_ss)
         #
-        self.addRequirements(self.motor_ss)
+        #self.addRequirements(self.motor_ss)
 
     def initialize(self):
         """

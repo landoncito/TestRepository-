@@ -20,17 +20,6 @@ class MotorSubsystem(commands2.Subsystem):
     """
     def __init__(self) -> None:
         """Creates a new ExampleSubsystem"""
-        super().__init__()
-        # Create sensors here, and assign them to instance variables.
-        # (Define the DIO port or CAN bus ID that your sensor uses in
-        #  constants.py)
-
-        # Create actuators here, and assign them to instance variables.
-        # (Define the DIO port or CAN bus ID that your actuator uses in
-        #  constants.py)
-
-        ## TODO: Change this for your robot!
-        ##       (Use your actuators and constants; change the variable name.)
         self.my_motor = phoenix6.hardware.TalonFX(
             ELEC.my_motor_CAN_ID)
     
