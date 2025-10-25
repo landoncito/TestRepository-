@@ -12,8 +12,8 @@ import commands2
 import commands2.button
 
 from constants import OP
-import subsystems.example_ss
-from commands.example_commands import TemplateCommand
+import subsystems.motor_ss
+from commands.motor_commands import GoForwardCommand, GoBackwardCommand, StopCommand
 
 
 class RobotContainer:
@@ -43,7 +43,7 @@ class RobotContainer:
         ## TODO: Change this for your robot!
         ##       (Use your subsystems, and change the variable name.)
         ##
-        self.my_example_ss = subsystems.example_ss.ExampleSubsystem()
+        self.my_motor_ss = subsystems.motor_ss.MotorSubsystem()
 
         # Configure the button bindings
         self.configureButtonBindings()
@@ -61,11 +61,13 @@ class RobotContainer:
         ##       (Use your commands and subsystems, and bind them to
         ##       buttons you choose.)
         ##
-        # run the example command when the left bumper is pressed
-        self.stick.leftBumper().onTrue(TemplateCommand(self.my_example_ss))
 
         # run the example command when the X button is pressed
-        self.stick.x().onTrue(TemplateCommand(self.my_example_ss))
+        self.stick.x().onTrue(GoForwardCommand(self.my_motor_ss))
+        self.stick.x().onFalse(StopCommand(self.my_motor_ss))
+
+        self.stick.y().onTrue(GoBackwardCommand(self.my_motor_ss))
+        self.stick.y().onFalse(StopCommand(self.my_motor_ss))
 
 
     def all_subsystems(self):
